@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hollow Bend Farm — Pasture-Raised Hens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F1E3;
+    --cream-deep: #EFE6D0;
+    --barn: #B5482C;
+    --barn-deep: #93381F;
+    --moss: #5C6B47;
+    --gold: #DDA22C;
+    --charcoal: #2B2620;
+    --charcoal-soft: #4A423A;
+    --line: rgba(43, 38, 32, 0.14);
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --cream: #23201B;
+      --cream-deep: #1B1815;
+      --charcoal: #F1EADA;
+      --charcoal-soft: #D8CFBC;
+      --line: rgba(241, 234, 218, 0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #23201B;
+    --cream-deep: #1B1815;
+    --charcoal: #F1EADA;
+    --charcoal-soft: #D8CFBC;
+    --line: rgba(241, 234, 218, 0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    overflow-x: hidden;
+  }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+  .brand svg { width: 28px; height: 28px; flex-shrink: 0; }
+  nav { display: flex; gap: 28px; }
+  nav a {
+    color: var(--charcoal-soft);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--barn); }
+  @media (max-width: 640px) {
+    nav { gap: 16px; }
+    nav a { font-size: 0.82rem; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 88px 0 64px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding: 56px 0 40px; text-align: left; }
+  }
+  .kicker {
+    color: var(--moss);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 5.2vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--charcoal);
+    max-width: 12ch;
+  }
+  .hero p.lede {
+    margin-top: 22px;
+    font-size: 1.08rem;
+    color: var(--charcoal-soft);
+    max-width: 46ch;
+  }
+  .hero-actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.94rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .btn-primary { background: var(--barn); color: var(--cream); }
+  .btn-primary:hover { background: var(--barn-deep); }
+  .btn-ghost { border-color: var(--line); color: var(--charcoal); }
+  .btn-ghost:hover { border-color: var(--charcoal-soft); }
+
+  .hero-art {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-art svg { width: 100%; max-width: 380px; height: auto; }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  .section-head { max-width: 60ch; margin-bottom: 40px; }
+  .eyebrow {
+    color: var(--moss);
+    font-weight: 600;
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+    color: var(--charcoal);
+  }
+  section p.deck {
+    margin-top: 14px;
+    color: var(--charcoal-soft);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  .about-grid p { color: var(--charcoal-soft); margin-bottom: 16px; }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .stat {
+    border-left: 2px solid var(--barn);
+    padding-left: 14px;
+  }
+  .stat b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    color: var(--charcoal);
+  }
+  .stat span { font-size: 0.86rem; color: var(--charcoal-soft); }
+
+  /* ---------- Portfolio grid ---------- */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 760px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .p-card {
+    background: var(--cream-deep);
+    border: 1px solid var(--line);
+    padding: 28px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 220px;
+  }
+  .p-card .icon { width: 44px; height: 44px; }
+  .p-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .p-card p { font-size: 0.92rem; color: var(--charcoal-soft); flex-grow: 1; }
+  .p-card .tag {
+    font-size: 0.78rem;
+    color: var(--moss);
+    font-weight: 600;
+  }
+
+  /* ---------- Visit / contact ---------- */
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 760px) {
+    .visit-grid { grid-template-columns: 1fr; }
+  }
+  .visit-card {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 4px;
+    padding: 36px;
+  }
+  :root[data-theme="dark"] .visit-card,
+  @media (prefers-color-scheme: dark) {
+    .visit-card { background: var(--cream-deep); color: var(--charcoal); border: 1px solid var(--line); }
+  }
+  .visit-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+  .visit-card dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 16px;
+    font-size: 0.94rem;
+    margin-top: 18px;
+  }
+  .visit-card dt { opacity: 0.65; }
+  form { display: flex; flex-direction: column; gap: 14px; }
+  label { font-size: 0.86rem; font-weight: 600; color: var(--charcoal-soft); }
+  input, textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--cream-deep);
+    color: var(--charcoal);
+  }
+  input:focus, textarea:focus, button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--barn);
+    outline-offset: 2px;
+  }
+  textarea { resize: vertical; min-height: 90px; }
+  .form-status { font-size: 0.88rem; color: var(--moss); min-height: 20px; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 calc(32px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: var(--charcoal-soft);
+    font-size: 0.86rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="var(--barn)" stroke-width="1.5"/>
+        <path d="M13 24c0-5 3-9 7-9s7 4 7 9" stroke="var(--barn)" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="20" cy="14" r="3.4" fill="var(--gold)"/>
+        <path d="M17 12.5 14 10M23 12.5l3-2.5" stroke="var(--barn)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      Hollow Bend Farm
+    </a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#work">Portfolio</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero" style="border-top:none; padding-top: 72px;">
+      <div>
+        <p class="kicker">Small pasture flock · Est. 2019</p>
+        <h1>Eggs, hens, and honest work, raised in the open air.</h1>
+        <p class="lede">Hollow Bend is a six-acre pasture flock raising heritage-breed hens for eggs, breeding stock, and the occasional roasting bird. This is a look at the flock, the breeds, and what a week here actually looks like.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">See the flock</a>
+          <a class="btn btn-ghost" href="#visit">Plan a visit</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="160" cy="290" rx="120" ry="10" fill="var(--charcoal)" opacity="0.06"/>
+          <path d="M60 210c10-70 55-120 100-120s90 50 100 120" stroke="var(--moss)" stroke-width="2" fill="none" opacity="0.35"/>
+          <g>
+            <ellipse cx="150" cy="190" rx="70" ry="58" fill="var(--gold)" opacity="0.18"/>
+            <path d="M95 205c0-46 30-84 65-84s65 38 65 84c0 30-29 48-65 48s-65-18-65-48Z" fill="var(--cream-deep)" stroke="var(--charcoal)" stroke-width="1.6"/>
+            <path d="M150 121c14-10 30-4 34 8-14 4-24 0-34-8Z" fill="var(--barn)"/>
+            <circle cx="120" cy="140" r="26" fill="var(--cream)" stroke="var(--charcoal)" stroke-width="1.6"/>
+            <circle cx="112" cy="136" r="3" fill="var(--charcoal)"/>
+            <path d="M96 128c-10-4-20 2-20 12s10 14 20 8" fill="var(--barn)" stroke="var(--charcoal)" stroke-width="1.4"/>
+            <path d="M92 122c-4-8 2-16 10-14" fill="var(--gold)" stroke="var(--charcoal)" stroke-width="1.2"/>
+            <path d="M215 230c8 12 4 26-8 30" stroke="var(--charcoal)" stroke-width="1.6" fill="none"/>
+            <path d="M100 250c30 14 90 14 120-4" stroke="var(--charcoal)" stroke-width="1.2" opacity="0.4" fill="none"/>
+          </g>
+          <ellipse cx="245" cy="265" rx="14" ry="10" fill="var(--cream-deep)" stroke="var(--charcoal)" stroke-width="1.4"/>
+          <ellipse cx="55" cy="270" rx="12" ry="9" fill="var(--cream-deep)" stroke="var(--charcoal)" stroke-width="1.4"/>
+        </svg>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <p class="eyebrow">About the flock</p>
+        <h2>Raised slow, on real pasture.</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>The flock moves across fresh grass every few days inside a mobile coop, so the birds are always on clean ground and the pasture gets to rest and recover. No cages, no crowding — just daylight, bugs, and room to range.</p>
+          <p>Every bird here is a heritage breed chosen for hardiness and flavor over speed. It takes longer to raise them this way. We think you can taste the difference.</p>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>140</b><span>Laying hens</span></div>
+          <div class="stat"><b>6</b><span>Heritage breeds</span></div>
+          <div class="stat"><b>6 yrs</b><span>Pasture-raising</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+        <p class="eyebrow">Portfolio</p>
+        <h2>What comes off the farm</h2>
+        <p class="deck">A sample of the breeds, products, and seasonal work — swap in your own photos here once you've got them.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="p-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="22" cy="26" rx="13" ry="11" fill="var(--gold)" opacity="0.25"/>
+            <ellipse cx="22" cy="24" rx="13" ry="15" fill="var(--cream-deep)" stroke="var(--barn)" stroke-width="1.4"/>
+          </svg>
+          <span class="tag">Breed</span>
+          <h3>Barred Rock</h3>
+          <p>Our steadiest layers — calm, cold-hardy, and reliable through the winter months.</p>
+        </article>
+        <article class="p-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="22" cy="22" r="14" fill="var(--moss)" opacity="0.18"/>
+            <path d="M15 18c1-6 5-10 7-10s6 4 7 10c1 6-3 12-7 12s-8-6-7-12Z" fill="var(--gold)" stroke="var(--barn)" stroke-width="1.3"/>
+          </svg>
+          <span class="tag">Product</span>
+          <h3>Farm-fresh eggs</h3>
+          <p>Mixed dozens, sold weekly at the stand — every shell shade the flock produces.</p>
+        </article>
+        <article class="p-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="8" y="20" width="28" height="14" rx="2" fill="var(--cream-deep)" stroke="var(--charcoal)" stroke-width="1.3"/>
+            <path d="M8 20l14-10 14 10" stroke="var(--barn)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="tag">Infrastructure</span>
+          <h3>The mobile coop</h3>
+          <p>Built in-house, moved every few days to follow fresh grass across the six acres.</p>
+        </article>
+        <article class="p-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="22" cy="26" rx="13" ry="11" fill="var(--barn)" opacity="0.18"/>
+            <ellipse cx="22" cy="24" rx="12" ry="14" fill="var(--cream-deep)" stroke="var(--barn)" stroke-width="1.4"/>
+          </svg>
+          <span class="tag">Breed</span>
+          <h3>Buff Orpington</h3>
+          <p>Gentle, broody, and good with kids — our pick for anyone starting their own flock.</p>
+        </article>
+        <article class="p-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 30c4-14 20-14 24 0" stroke="var(--moss)" stroke-width="1.6" fill="none"/>
+            <circle cx="22" cy="16" r="5" fill="var(--gold)"/>
+          </svg>
+          <span class="tag">Season</span>
+          <h3>Spring hatch</h3>
+          <p>Chicks arrive each March — the busiest, loudest, best two weeks of the year.</p>
+        </article>
+        <article class="p-card">
+          <svg class="icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="10" y="12" width="24" height="20" rx="1" fill="var(--cream-deep)" stroke="var(--charcoal)" stroke-width="1.3"/>
+            <path d="M14 20h16M14 25h10" stroke="var(--barn)" stroke-width="1.3"/>
+          </svg>
+          <span class="tag">Product</span>
+          <h3>Breeding stock</h3>
+          <p>Started pullets and hatching eggs available by season — reach out ahead of spring.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="section-head">
+        <p class="eyebrow">Visit or get in touch</p>
+        <h2>Come see the flock</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>Farm stand hours</h3>
+          <p style="opacity:0.85; font-size:0.94rem;">Self-serve, honesty-box stand at the end of the drive. Cash or card box provided.</p>
+          <dl>
+            <dt>Fri – Sun</dt><dd>9am – 4pm</dd>
+            <dt>Mon – Thu</dt><dd>By appointment</dd>
+          </dl>
+        </div>
+        <div>
+          <form onsubmit="event.preventDefault(); document.getElementById('formStatus').textContent = 'Thanks — this is a demo form, wire it up to your email or a form service.';">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="I'd like to ask about..."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Send message</button>
+            <p class="form-status" id="formStatus"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Hollow Bend Farm</span>
+      <span>Built with care, one flock at a time</span>
+    </footer>
+  </div>
+</main>
+
+</body>
+</html>
